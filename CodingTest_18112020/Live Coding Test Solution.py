@@ -6,35 +6,39 @@
 # Snakes -> 95,13 97,25 93,37 79,27 75,19 49,47 67,17
 
 import random
+import numpy as np
 
 def get_dice_value(face_prob_arr):
-	random_val = random.random() # random.randint(1, 6)
-	# print(random_val)
-	face_prob_sum_arr = list()
-	curr_sum = face_prob_arr[0]
-	for counter, face_prob in enumerate(face_prob_arr):
-		if counter == 0:
-			face_prob_sum_arr.append(curr_sum)
-		else:
-			curr_sum += face_prob_arr[counter]
-			face_prob_sum_arr.append(curr_sum)
-	
-	if random_val>=0 and random_val<=face_prob_sum_arr[0]:
-		dice_value = 1
-	elif random_val>face_prob_sum_arr[0] and random_val<=face_prob_sum_arr[1]:
-		dice_value = 2
-	elif random_val>face_prob_sum_arr[1] and random_val<=face_prob_sum_arr[2]:
-		dice_value = 3
-	elif random_val>face_prob_sum_arr[2] and random_val<=face_prob_sum_arr[3]:
-		dice_value = 4
-	elif random_val>face_prob_sum_arr[3] and random_val<=face_prob_sum_arr[4]:
-		dice_value = 5
-	elif random_val>face_prob_sum_arr[4] and random_val<=face_prob_sum_arr[5]:
-		dice_value = 6
-	else:
-		dice_value = None
+	## Approach 1 -> Complex, but consumes less time
+	# random_val = random.random() # random.randint(1, 6)
+	# # print(random_val)
+	# face_prob_sum_arr = list()
+	# curr_sum = face_prob_arr[0]
+	# for counter, face_prob in enumerate(face_prob_arr):
+	# 	if counter == 0:
+	# 		face_prob_sum_arr.append(curr_sum)
+	# 	else:
+	# 		curr_sum += face_prob_arr[counter]
+	# 		face_prob_sum_arr.append(curr_sum)
+	# if random_val>=0 and random_val<=face_prob_sum_arr[0]:
+	# 	dice_value = 1
+	# elif random_val>face_prob_sum_arr[0] and random_val<=face_prob_sum_arr[1]:
+	# 	dice_value = 2
+	# elif random_val>face_prob_sum_arr[1] and random_val<=face_prob_sum_arr[2]:
+	# 	dice_value = 3
+	# elif random_val>face_prob_sum_arr[2] and random_val<=face_prob_sum_arr[3]:
+	# 	dice_value = 4
+	# elif random_val>face_prob_sum_arr[3] and random_val<=face_prob_sum_arr[4]:
+	# 	dice_value = 5
+	# elif random_val>face_prob_sum_arr[4] and random_val<=face_prob_sum_arr[5]:
+	# 	dice_value = 6
+	# else:
+	# 	dice_value = None
+
+	## Approach 2 -> Simple, but consumes more time
+	dice_value = np.random.choice(a=[1,2,3,4,5,6], p=face_prob_arr, size=1, replace=False)[0]
+
 	# print(dice_value)
-	
 	return dice_value
 
 
