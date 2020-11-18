@@ -9,6 +9,8 @@ import random
 import numpy as np
 
 def get_dice_value(face_prob_arr):
+	# For running the simulation 2000 times, approach 2 consumes approximately 33x more time as compared to approach 1
+
 	## Approach 1 -> Complex, but consumes less time
 	# random_val = random.random() # random.randint(1, 6)
 	# # print(random_val)
