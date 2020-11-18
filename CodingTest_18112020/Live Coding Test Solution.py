@@ -9,9 +9,7 @@ import random
 import numpy as np
 
 def get_dice_value(face_prob_arr):
-	# For running the simulation 2000 times, approach 2 consumes approximately 33x more time as compared to approach 1
-
-	## Approach 1 -> Complex, but consumes less time
+	## Approach 1 -> Complex, but consumes less time.
 	# random_val = random.random() # random.randint(1, 6)
 	# # print(random_val)
 	# face_prob_sum_arr = list()
@@ -37,8 +35,12 @@ def get_dice_value(face_prob_arr):
 	# else:
 	# 	dice_value = None
 
-	## Approach 2 -> Simple, but consumes more time
+	## Approach 2 -> Simple, but consumes more time and uses external dependency numpy.
 	dice_value = np.random.choice(a=[1,2,3,4,5,6], p=face_prob_arr, size=1, replace=False)[0]
+	# For running the simulation 2000 times, approach 2 consumes approximately 33x more time as compared to approach 1.
+
+	## Approach 3 -> Simple, but requires client to run Python 3.6 or higher. While taking the test I was using a client with Python 3.5.2 installed in it so did not use this.
+	# dice_value = random.choices(population=[1,2,3,4,5,6], weights=[0.32,0.32,0.12,0.04,0.07,0.13], k=1)[0]
 
 	# print(dice_value)
 	return dice_value
@@ -84,5 +86,5 @@ for i in range(0, no_of_simulation_runs):
 	val = run_simulation(face_prob_arr, ladders_arr, snakes_arr)
 	print("For simulation run: {}, number of iterations required: {}".format(i+1, val))
 	avg_val += val
-print("-----------------")
+print("----------------------------------------------------------------------------")
 print("Average number of iterations required across all {} simulation runs: {}".format(no_of_simulation_runs, avg_val // no_of_simulation_runs))
