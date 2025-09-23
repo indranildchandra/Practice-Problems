@@ -1,16 +1,16 @@
-## Design push and pull APIs for a producer consumer system with N producers and M consumers conforming to the following definitions:
-# 
-# # Push(Key, Payload);
-# # Push need not have consecutive keys. But keys pushed are monotonically increasing.
-# 
-# # Payload Pull(Key);
-# # Pull can be for any seq/key number.
-# # If the seq number is not found, return the payload for the immediate next higher sequence number.
-# # If there is no next higher seq num, return null.
-# 
-# # Container has a fixed amount of memory. 
+# Design push and pull APIs for a producer consumer system with N producers and M consumers conforming to the following definitions:
+
+# Push(Key, Payload);
+# Push need not have consecutive keys. But keys pushed are monotonically increasing.
+
+# Payload Pull(Key);
+# Pull can be for any seq/key number.
+# If the seq number is not found, return the payload for the immediate next higher sequence number.
+# If there is no next higher seq num, return null.
+
+# Container has a fixed amount of memory.
 # When the container is full, you can delete the lowest sequence number.
-# # Once an item is pulled, it is unavailable for other pulls and can be discarded by the container
+# Once an item is pulled, it is unavailable for other pulls and can be discarded by the container
 
 ## capacity = 3
 ## push (1, "value1")
@@ -21,7 +21,7 @@
 
 ## pull (2) => "value3"
 
-## push (10, "value10") 
+## push (10, "value10")
 
 ## push (15, "value15")  => deletion of (1, "value")
 
